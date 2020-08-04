@@ -16,7 +16,7 @@ Fork this repo, change the links to your preferred sites if you like, and [set y
 
 In your web browser, set the URL for new tab pages to your new start page, hosted by GitHub Pages. ✨
 
-- [Set home page or new tab page in Firefox](https://support.mozilla.org/en-US/kb/how-to-set-the-home-page)
+- [Set home page in Firefox](https://support.mozilla.org/en-US/kb/how-to-set-the-home-page) and [override new tab pages](https://addons.mozilla.org/en-US/firefox/addon/new-tab-override/)
 - [Set homepage or startup page in Chrome](https://support.google.com/chrome/answer/95314)
 - [Change your homepage in Safari on Mac](https://support.apple.com/guide/safari/change-your-homepage-ibrw1020/mac)
 
