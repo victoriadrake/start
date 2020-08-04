@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #C5C3C6;
+    --input: #DCDCDD;
+    --color: #111;
+    --link: #4C5C68;
+    --shadow: #46494C;
+    --hover: var(--shadow);
+    --radius: 1em;
+    --pagewidth: 70%;
+    --maxwidth: 680px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link);
+    transition: ease-in-out 300ms;
+}
+
+html {
+    color: var(--color);
+    background: var(--background);
+}
+
+div {
+    color: var(--color);
+    background: var(--background);
+}
+
+input {
+    color: var(--color);
+    background: var(--input);
+    border-radius: var(--radius);
+    box-shadow: 4px 6px var(--shadow);
+}
+
+button {
+    color: var(--color);
+    background-color: var(--input);
+    border-radius: var(--radius);
+    box-shadow: 4px 6px var(--shadow);
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: baseline;
+    flex-direction: column;
+    padding-top: 25vh;
+    color: var(--color);
+    background: var(--background);
+}
+
+.content {
+    font-family: monospace;
+    width: var(--pagewidth);
+    max-width: var(--maxwidth);
+    display: flex;
+    flex-direction: column;
+}
+
+.content h1 {
+    margin: 1em 0;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-input {
+    width: 100%;
+    display: flex;
+}
+
+.content-input #search {
+    box-sizing: border-box;
+    height: 32px;
+    padding: 1em;
+    margin: 1em 1em 1em 0;
+    flex: 9;
+    border: 0;
+    background: var(--input);
+}
+
+.content-input button {
+    margin: 1em 0;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    flex: 1;
+    cursor: pointer;
+}
+
+.content-input button:hover {
+    transform: translateX(5px);
+    transform: translateY(3px);
+    box-shadow: 2px 3px var(--shadow);
+}
+
+.links {
+    font-family: "Inconsolata", "Roboto Mono", "Consolas", "Courier New", monospace;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: 100px;
+    width: var(--pagewidth);
+    max-width: var(--maxwidth);
+}
+
+.links .menu-block {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.links ul li a {
+    color: var(--link);
+}
+
+.links ul li a:hover {
+    color: var(--hover);
+}
