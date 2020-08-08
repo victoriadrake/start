@@ -10,6 +10,8 @@ There are three themes that change throughout the day.
 
 ![Night time](./img/night.png)
 
+There's a bonus theme if you stay up long enough.
+
 ## Usage
 
 Fork this repo, change the links to your preferred sites if you like, and [set your GitHub Pages source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
