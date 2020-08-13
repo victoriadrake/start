@@ -3,6 +3,7 @@ var CACHE = 'cache-and-update';
 self.addEventListener('install', function (evt) {
   console.log('The service worker is being installed.');
 
+  self.skipWaiting();
   evt.waitUntil(precache());
 });
 
