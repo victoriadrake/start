@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <title>Hello.</title>
+        <title>Start</title>
         <link rel="stylesheet" href="main.css">
         <script src="index.js"></script>
     </head>
@@ -11,7 +11,8 @@
         <div class="wrapper">
             <div class="content">
                 <div class="content-greeting">
-                    <h1>I find your lack of <code>index.js</code> disturbing.<span id="day"></span></h1>
+                    <h1><span id="greeting">I find your lack of <code>index.js</code> disturbing</span><span
+                            id="date"></span>.</h1>
                 </div>
                 <div class="content-wrapper">
                     <div class="content-time">
@@ -21,44 +22,99 @@
                         <h3 id="utc-time">00 : 00 : 00</h3>
                     </div>
                     <div class="content-date">
-                        <h3 id="date">01 / 01 / 16</h3>
+                        <h3 id="longdate">01 / 01 / 16</h3>
                     </div>
                 </div>
                 <div class="content-input">
-                    <input type="text" placeholder="search" id="search" autofocus />
-                    <button href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-search">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </button>
+                    <div>
+                        <input type="text" placeholder="search" id="search" autofocus />
+                        <button id="search-button" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-search">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="links">
-                <div class="menu-block">
-                    <ul>
-                        <li>github</li>
-                        <li><a href="https://github.com/notifications">notifications</a></li>
-                        <li><a href="https://github.com/">recent activity</a></li>
-                    </ul>
-                </div>
-                <div class="menu-block">
-                    <ul>
-                        <li>tools</li>
-                        <li><a href="https://1password.com/">1password</a></li>
-                        <li><a href="https://applybyapi.com/">applybyapi</a></li>
-                        <li><a href="https://app.standardnotes.org/">standardnotes</a></li>
-                    </ul>
-                </div>
-                <div class="menu-block">
-                    <ul>
-                        <li>google</li>
-                        <li><a href="https://mail.google.com">mail</a></li>
-                        <li><a href="https://drive.google.com">drive</a></li>
-                        <li><a href="https://calendar.google.com">calendar</a></li>
-                    </ul>
+            <div class="content">
+                <div class="weather">
+                    <div class="row">
+                        <div class="icon">
+                            <span id="icon">
+                                <img src="http://openweathermap.org/img/wn/02d@2x.png" width="75px" height="75px">
+                            </span>
+                        </div>
+                        <div class="location">
+                            <h2>
+                                <span id="city"></span>
+                                <span id="desc">
+                                    Error. Go look out the window.
+                                </span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="current">
+                            It's currently <span id="current">nice(?)</span> and feels like <span id="feels">its
+                                nice</span>.
+                        </div>
+                    </div>
+                    <div class="row" id="stats">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-arrow-up">
+                                <line x1="12" y1="19" x2="12" y2="5"></line>
+                                <polyline points="5 12 12 5 19 12"></polyline>
+                            </svg>&nbsp;<span id="high">hot?</span>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-arrow-down">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>&nbsp;<span id="low">less hot?</span>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-droplet">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                            </svg>&nbsp;<span id="humidity">humid?</span>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-sunrise">
+                                <path d="M17 18a5 5 0 0 0-10 0"></path>
+                                <line x1="12" y1="2" x2="12" y2="9"></line>
+                                <line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line>
+                                <line x1="1" y1="18" x2="3" y2="18"></line>
+                                <line x1="21" y1="18" x2="23" y2="18"></line>
+                                <line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line>
+                                <line x1="23" y1="22" x2="1" y2="22"></line>
+                                <polyline points="8 6 12 2 16 6"></polyline>
+                            </svg>&nbsp;<span id="sunrise">morning</span>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-sunset">
+                                <path d="M17 18a5 5 0 0 0-10 0"></path>
+                                <line x1="12" y1="9" x2="12" y2="2"></line>
+                                <line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line>
+                                <line x1="1" y1="18" x2="3" y2="18"></line>
+                                <line x1="21" y1="18" x2="23" y2="18"></line>
+                                <line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line>
+                                <line x1="23" y1="22" x2="1" y2="22"></line>
+                                <polyline points="16 5 12 9 8 5"></polyline>
+                            </svg>&nbsp;<span id="sunset">evening, probably</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
