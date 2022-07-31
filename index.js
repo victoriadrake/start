@@ -66,7 +66,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
       return sunriseStamp.getHours(), sunsetStamp.getHours()
     } else {
-      console.log(response)
+      const result = await response.json()
+      console.log(result)
+      replace('weather-content', '')
     }
   }
 
