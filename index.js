@@ -1,7 +1,7 @@
 const CITY = '2643743' // Find your city ID here: https://openweathermap.org/current#cityid
 const API_KEY = 'xxx' // Add your API key
 
-document.addEventListener('DOMContentLoaded', function (event) {
+document.addEventListener('DOMContentLoaded', async (event) => {
   // Refresh content every 30 mins
   window.setTimeout(function () {
     window.location.reload()
@@ -25,8 +25,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     })
     document.getElementById('date').innerHTML = today
     document.getElementById('longdate').innerHTML = date.toDateString()
-
-    return today
   }
 
   const replace = (id, data) => {
@@ -64,7 +62,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
       replace('sunset', sunset)
       replace('icon', icon)
 
-      return sunriseStamp.getHours(), sunsetStamp.getHours()
+      return {
+        rise: sunriseStamp.getHours(),
+        set: sunsetStamp.getHours()
+      }
     } else {
       const result = await response.json()
       console.log(result)
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     return rgb
   }
 
-  const setStyle = (riseHour, setHour, today) => {
+  const setStyle = (riseHour, setHour) => {
     const now = new Date()
     let h = now.getHours()
 
@@ -128,50 +129,55 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // Set colors based on the hour
     let hour = h // Redeclare for testing
     if (hour === riseHour) {
-      // Set sunrise colors
+      console.log('Set sunrise colors')
       document.querySelector(':root').style.setProperty('--background', '#c9cde5')
       document.querySelector(':root').style.setProperty('--weather', ColorLuminance('#c9cde5', 0.06))
       document.querySelector(':root').style.setProperty('--input', '#e3d6ce')
       document.querySelector(':root').style.setProperty('--link', '#9db2c5')
       document.querySelector(':root').style.setProperty('--shadow', '#e9e5dc')
       document.querySelector(':root').style.setProperty('--color', '#445b6d')
-    }
-    if (hour > riseHour) {
-      // Set daytime colors
+    } else if (hour > riseHour) {
+      console.log('Set daytime colors')
       document.querySelector(':root').style.setProperty('--background', '#e8e8e8')
       document.querySelector(':root').style.setProperty('--weather', ColorLuminance('#e8e8e8', 0.02))
       document.querySelector(':root').style.setProperty('--input', '#f8f8f8')
       document.querySelector(':root').style.setProperty('--link', '#788571')
       document.querySelector(':root').style.setProperty('--shadow', '#c79c72')
       document.querySelector(':root').style.setProperty('--color', '#222222')
-    }
-    if (hour === setHour) {
-      // Set sunset colors 
+    } else if (hour === setHour) {
+      console.log('Set sunset colors ')
       document.querySelector(':root').style.setProperty('--background', '#6e7382')
       document.querySelector(':root').style.setProperty('--weather', ColorLuminance('#6e7382', 0.09))
       document.querySelector(':root').style.setProperty('--input', '#e7ebee')
       document.querySelector(':root').style.setProperty('--link', '#ccc4b9')
       document.querySelector(':root').style.setProperty('--shadow', '#535240')
       document.querySelector(':root').style.setProperty('--color', '#222222')
-    }
-    if (hour > setHour) {
-      // Set nighttime colors
+    } else if (hour > setHour) {
+      console.log('Set nighttime colors')
       document.querySelector(':root').style.setProperty('--background', '#091008')
       document.querySelector(':root').style.setProperty('--weather', ColorLuminance('#091008', 0.8))
       document.querySelector(':root').style.setProperty('--input', '#3e563e')
       document.querySelector(':root').style.setProperty('--link', '#93a889')
       document.querySelector(':root').style.setProperty('--shadow', '#1f2f22')
       document.querySelector(':root').style.setProperty('--color', '#ced9df')
+    } else {
+      console.error('Could not decide on a color scheme.')
+      console.log('Hour is: ', hour)
+      console.log('Sunrise is: ', riseHour)
+      console.log('Sunset is: ', setHour)
+
     }
   }
   setTime()
-  let today = setDate()
+  setDate()
   setInterval(setTime, 1000)
-  let riseHour, setHour = setWeather()
-  setStyle(riseHour, setHour, today)
+  let {
+    rise,
+    set
+  } = await setWeather()
+  setStyle(rise, set)
   const button = document.querySelector('#search-button')
   button.addEventListener('click', search)
-
   document.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') search()
   })
