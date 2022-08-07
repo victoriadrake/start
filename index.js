@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     return rgb
   }
 
-  const setStyle = (riseHour, setHour) => {
+  const setGreeting = () => {
     const now = new Date()
     let h = now.getHours()
 
@@ -125,7 +125,11 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     if (period === 0) {
       replace('greeting', 'Go get some sleep!')
     }
+  }
 
+  const setStyle = (riseHour, setHour) => {
+    const now = new Date()
+    let h = now.getHours()
     // Set colors based on the hour
     let hour = h // Redeclare for testing
     if (hour === riseHour) {
@@ -171,6 +175,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
   setTime()
   setDate()
   setInterval(setTime, 1000)
+  setGreeting()
   let {
     rise,
     set
