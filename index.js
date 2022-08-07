@@ -114,16 +114,16 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     else period = 0
 
     if (period === 1) {
-      replace('greeting', 'Good morning. It\'s ')
+      replace('greeting', 'Good morning.')
     }
     if (period === 2) {
-      replace('greeting', 'Good afternoon. It\'s ')
+      replace('greeting', 'Good afternoon.')
     }
     if (period === 3) {
-      replace('greeting', 'Good evening. It\'s still ')
+      replace('greeting', 'Good evening.')
     }
     if (period === 0) {
-      replace('greeting', 'Go get some sleep! It\'s already ')
+      replace('greeting', 'Go get some sleep!')
     }
 
     // Set colors based on the hour
